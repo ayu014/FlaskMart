@@ -90,3 +90,8 @@ body, html {
     transform: scale(1.1); /* Slight zoom effect */
     text-decoration: underline;
 }
+
+
+.home{
+    margin-left: 20px;
+}
