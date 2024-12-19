@@ -17,8 +17,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <img src="{{url_for('static',filename='images/mart_logo.png')}}" height="20px">
-                <a href="#">FlaskMart</a>
+                <a href="{{ url_for('home')}}"> <img src="{{url_for('static',filename='images/box-seam.svg')}}" height="27px" style="margin-right: 10px;">FlaskMart</a>
             </div>
             <ul class="nav-links">
                 <li><a href="{{ url_for('home')}}">Home</a></li>
