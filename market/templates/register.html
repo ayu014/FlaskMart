@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register Page
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <form method="post" class="form-register" style="color:black">
+            {{ form.username.label() }}
+            {{ form.username(class = "form-control",placeholder = "xyz") }}
+        </form>
+
+        <form method="post" class="form-register" style="color:black">
+            {{ form.email.label() }}
+            {{ form.email(class = "form-control",placeholder = "xyz@gmail.com") }}
+        </form>
+
+        <form method="post" class="form-register" style="color:black">
+            {{ form.password1.label() }}
+            {{ form.password1(class = "form-control",placeholder = "********") }}
+        </form>
+
+        <form method="post" class="form-register" style="color:black">
+            {{ form.password2.label() }}
+            {{ form.password2(class = "form-control",placeholder = "********") }}
+        </form>
+
+        {{ form.submit()}}
+
+
+    </div>
+
+{% endblock %}
