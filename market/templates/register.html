@@ -10,6 +10,7 @@
     <div class="container">
         <h1>Create Your Account</h1>
         <form method="post" class="form-register">
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.username.label(class="form-label") }}
                 {{ form.username(class="form-control", placeholder="eg: xyz123") }}
