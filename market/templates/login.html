@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Login Here</h1>
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control", placeholder="Xyz123") }}
+    
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control password-input", placeholder = "") }}
+    
+        {{ form.submit(class="btn-submit") }}
+
+    </div>
+
+
+
+{% endblock %}
