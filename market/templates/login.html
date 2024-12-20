@@ -1,22 +1,51 @@
 {% extends 'base.html' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+{% endblock %}
+
 {% block title %}
     Login
 {% endblock %}
 
 {% block content %}
+
     <div class="container">
         <h1>Login Here</h1>
-        {{ form.username.label(class="form-label") }}
-        {{ form.username(class="form-control", placeholder="Xyz123") }}
-    
-        {{ form.password.label(class="form-label") }}
-        {{ form.password(class="form-control password-input", placeholder = "") }}
-    
-        {{ form.submit(class="btn-submit") }}
+        <form method="post" class="form-login">
+            <div class="form-group">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="eg: xyz123") }}
+            </div>
 
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control password-input", placeholder="Enter your password") }}
+                <div class="password-toggle">
+                    <input type="checkbox" id="togglePassword">
+                    <label for="togglePassword">Show Password</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="btn-submit") }}
+            </div>
+        </form>
+
+        <div class="form-footer">
+            <p>Don't have an account? <a href="{{ url_for('register_page') }}">Register here</a></p>
+        </div>
     </div>
 
-
-
+    <script>
+        // JavaScript to toggle password visibility
+        document.getElementById('togglePassword').addEventListener('change', function() {
+            const passwordInput = document.querySelector('.password-input');
+            if (this.checked) {
+                passwordInput.setAttribute('type', 'text');
+            } else {
+                passwordInput.setAttribute('type', 'password');
+            }
+        });
+    </script>
 {% endblock %}

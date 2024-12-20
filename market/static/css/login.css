@@ -1,0 +1,78 @@
+
+/* Styling for the body background */
+body {
+    background-color:  rgba(41, 153, 161, 0.342); /* Light grayish-blue background */
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the form container */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff; /* White container background */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styling for the heading */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333; /* Dark gray text */
+}
+
+/* Styling for form labels */
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #555555; /* Medium gray text */
+}
+
+/* Styling for form inputs */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Styling for the submit button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Footer text */
+.form-footer {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555555;
+}
+
+.form-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
