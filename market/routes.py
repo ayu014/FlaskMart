@@ -36,3 +36,4 @@ def register_page():
 def login_page():
     form = LoginForm()
     return render_template('login.html', form = form)
+    
