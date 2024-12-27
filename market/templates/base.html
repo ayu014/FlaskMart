@@ -33,13 +33,24 @@
                 <a href="{{ url_for('home')}}"> <img src="{{url_for('static',filename='images/logo.svg')}}" height="35px" style="margin-right: 7px;">FlaskMart</a>
             </div>
             <ul class="nav-links">
-                <li style="margin-left: -480px;"><a href="{{ url_for('home')}}">Home</a></li>
+                <li style="margin-left: -430px;"><a href="{{ url_for('home')}}">Home</a></li>
                 <li><a href="{{ url_for('market_page')}}">Market</a></li>
             </ul>
-            <div class="auth-links">
-                <a href="{{ url_for('login_page')}}" class="login">Login</a>
-                <a href="{{ url_for('register_page')}}" class="register">Register</a>
-            </div>
+            {% if current_user.is_authenticated %}
+                <div class="auth-links">
+                    <a style="color: lawngreen; font-weight: bold;">
+                        <img src="{{url_for('static',filename='images/coin.svg')}}" height="20px">
+                        <i class="fas fa-coins">{{current_user.budget }}</i>
+                    </a>
+                    <a href="#" class="login">Welcome, {{ current_user.username }}</a>
+                    <a href="#" class="register">Logout</a>
+                </div>
+            {% else %}
+                <div class="auth-links">
+                    <a href="{{ url_for('login_page')}}" class="login">Login</a>
+                    <a href="{{ url_for('register_page')}}" class="register">Register</a>
+                </div>
+            {% endif %}
         </div>
     </nav>
 
