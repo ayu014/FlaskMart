@@ -23,7 +23,7 @@ def register_page():
     if form.validate_on_submit():
         user_to_create = User(username = form.username.data,
                               email = form.email.data,
-                              password_hash = form.password1.data)
+                              password = form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page'))
@@ -32,7 +32,7 @@ def register_page():
             flash(f"There was an error with creating account: {error_msg}",category='danger')
     return render_template('register.html', form = form)
 
-@app.route("/login")
+@app.route("/login",methods = ['GET','POST'])
 def login_page():
     form = LoginForm()
     return render_template('login.html', form = form)

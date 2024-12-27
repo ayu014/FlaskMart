@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url_for('static',filename='css/navbar.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
     {% block stylesheet %}
+    
 
     {% endblock %}
     <title>
@@ -27,7 +30,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="{{ url_for('home')}}"> <img src="{{url_for('static',filename='images/box-seam.svg')}}" height="27px" style="margin-right: 10px;">FlaskMart</a>
+                <a href="{{ url_for('home')}}"> <img src="{{url_for('static',filename='images/logo.svg')}}" height="35px" style="margin-right: 7px;">FlaskMart</a>
             </div>
             <ul class="nav-links">
                 <li style="margin-left: -480px;"><a href="{{ url_for('home')}}">Home</a></li>
