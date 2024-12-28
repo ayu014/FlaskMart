@@ -4,3 +4,4 @@ python-dotenv
 email_validator
 flask_bcrypt
 flask_login
+Babel

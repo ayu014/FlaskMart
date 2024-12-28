@@ -40,7 +40,8 @@
                 <div class="auth-links">
                     <a style="color: lawngreen; font-weight: bold;">
                         <img src="{{url_for('static',filename='images/coin.svg')}}" height="20px">
-                        <i class="fas fa-coins">{{current_user.budget }}</i>
+                        <i class="fas fa-coins"></i>
+                        {{current_user.prettier_budget }}
                     </a>
                     <a href="#" class="login">Welcome, {{ current_user.username }}</a>
                     <a href="#" class="register">Logout</a>

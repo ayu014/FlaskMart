@@ -1,6 +1,7 @@
 from market import db,login_manager
 from market import bcrypt
 from flask_login import UserMixin
+from babel.numbers import format_currency
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -13,6 +14,12 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(length = 50),nullable = False,unique = True)
     budget = db.Column(db.Integer, default = 1000)
     items = db.relationship('Item',backref='owned_user',lazy = True)
+
+
+    @property
+    def prettier_budget(self):
+        return format_currency(self.budget,'INR', locale='en_IN')
+
 
     @property
     def password(self):
