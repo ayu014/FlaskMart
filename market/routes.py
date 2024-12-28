@@ -2,7 +2,7 @@ from logging import info
 from market import app
 from market.models import Item, User
 from flask import render_template, redirect,url_for, flash,get_flashed_messages
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from market.forms import RegisterForm, LoginForm
 from market import db
 
@@ -15,6 +15,7 @@ def home():
     return render_template("index.html")
 
 @app.route("/market")
+@login_required
 def market_page():
     items = Item.query.all()
     return render_template("market.html",items = items)
@@ -28,6 +29,10 @@ def register_page():
                               password = form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        login_user(user=user_to_create)
+        flash(f"Success! You're logged in as {user_to_create.username}",category='success')
+
+
         return redirect(url_for('market_page'))
     if form.errors != {}:                                   #If there are not any errors from the validations
         for error_msg in form.errors.values():
