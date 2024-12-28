@@ -18,7 +18,7 @@ class User(db.Model,UserMixin):
 
     @property
     def prettier_budget(self):
-        return format_currency(self.budget,'INR', locale='en_IN')
+        return format_currency(self.budget,'INR', locale='en_IN',format=None)
 
 
     @property

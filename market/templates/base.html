@@ -43,8 +43,8 @@
                         <i class="fas fa-coins"></i>
                         {{current_user.prettier_budget }}
                     </a>
-                    <a href="#" class="login">Welcome, {{ current_user.username }}</a>
-                    <a href="#" class="register">Logout</a>
+                    <a class="login">Welcome, {{ current_user.username }}</a>
+                    <a href="{{ url_for('logout_page')}}" class="register">Logout</a>
                 </div>
             {% else %}
                 <div class="auth-links">
