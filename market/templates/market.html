@@ -3,36 +3,38 @@
     Market
 {% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/market.css')}}">
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <div class="row" style="margin-top: 20px;">
+<div class="container market-container">
+    <div class="row market-row">
         <!-- Available Items Section -->
-        <div class="col-md-8" style="margin-left: -80px; text-align: center;">
-            <h2 style="font-weight: bold;">Available Items</h2>
-            <p>Click on one of the items to start buying</p>
-            <br>
-            <!-- ITEM TABLE -->
-            <table class="table">
+        <div class="col-md-7 available-items-section">
+            <h2 class="section-title">Available Items</h2>
+            <p class="section-description">Click on one of the items to start buying</p>
+            <table class="items-table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Barcode</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Options</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Barcode</th>
+                        <th>Price</th>
+                        <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in items %}
                         {% include 'includes/items_modals.html' %}
                         <tr>
-                            <th scope="row">{{ item.id }}</th>
-                            <td>{{ item["name"] }}</td>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
                             <td>{{ item.barcode }}</td>
-                            <td>₹ {{ item["price"] }}</td>
+                            <td>₹ {{ item.price }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
+                                <button type="button" class="more-info-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                                <button type="button" class="buy-btn" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
                             </td>
                         </tr>
                     {% endfor %}
@@ -41,22 +43,20 @@
         </div>
 
         <!-- Vertical Line -->
-        <div class="col-md-1 d-flex justify-content-center">
-            <div style="border-left: 2px solid #504c4ccb; height: 100%;"></div>
+        <div class="col-md-1 vertical-divider">
+            <div class="divider-line"></div>
         </div>
 
         <!-- Owned Items Section -->
-        <!-- Owned Items Section -->
-        <div class="col-md-3" style="text-align: center;">
-            <h2 style="font-weight: bold;">Owned Items</h2>
-            <p>Click on sell item to put an item back on the market</p>
-            <ul class="list-group">
+        <div class="col-md-4 owned-items-section">
+            <h2 class="section-title">Owned Items</h2>
+            <p class="section-description">Click on sell item to put an item back on the market</p>
+            <ul class="owned-items-list">
                 {% for item in owned_items %}
                     <li class="list-group-item">{{ item.name }} - ₹{{ item.price }}</li>
                 {% endfor %}
             </ul>
         </div>
-        
     </div>
 </div>
 {% endblock %}

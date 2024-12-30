@@ -24,17 +24,17 @@ def market_page():
     if request.method == "POST" and buy_form.validate_on_submit():
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(name=purchased_item).first()
-        if p_item_object and current_user.budget>=p_item_object.price:
+        if p_item_object :
             # print(f"Purchased item: {purchased_item}")
-            p_item_object.owner = current_user.id
-            current_user.budget -= p_item_object.price
-            db.session.commit()
-            flash(f"You have purchased {purchased_item}!", category='success')
+            p_item_object.assign_ownership(current_user)
+            flash(f"You have purchased {purchased_item}! for {p_item_object.price}", category='success')
         else:
             flash(f"Insufficient budget to purchase {p_item_object.name}.", category='danger')
+        return redirect(url_for('market_page'))
 
     items = Item.query.filter_by(owner=None).all()
-    return render_template("market.html",items = items, buy_form= buy_form)
+    owned_items = Item.query.filter_by(owner=current_user.id).all()
+    return render_template("market.html",items = items, buy_form= buy_form, owned_items = owned_items)
 
 @app.route("/register", methods = ['GET','POST'])
 def register_page():
