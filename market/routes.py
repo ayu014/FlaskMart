@@ -1,9 +1,10 @@
 from logging import info
+from os import name
 from market import app
 from market.models import Item, User
-from flask import render_template, redirect,url_for, flash,get_flashed_messages
-from flask_login import login_user, logout_user, login_required
-from market.forms import RegisterForm, LoginForm
+from flask import request, render_template, redirect,url_for, flash,get_flashed_messages
+from flask_login import login_user, logout_user, login_required, current_user
+from market.forms import RegisterForm, LoginForm, SellItemForm, BuyItemForm
 from market import db
 
 
@@ -14,11 +15,26 @@ from market import db
 def home():
     return render_template("index.html")
 
-@app.route("/market")
+@app.route("/market", methods=['GET', 'POST'])
 @login_required
 def market_page():
-    items = Item.query.all()
-    return render_template("market.html",items = items)
+    sell_form = SellItemForm()
+    buy_form = BuyItemForm()
+
+    if request.method == "POST" and buy_form.validate_on_submit():
+        purchased_item = request.form.get('purchased_item')
+        p_item_object = Item.query.filter_by(name=purchased_item).first()
+        if p_item_object and current_user.budget>=p_item_object.price:
+            # print(f"Purchased item: {purchased_item}")
+            p_item_object.owner = current_user.id
+            current_user.budget -= p_item_object.price
+            db.session.commit()
+            flash(f"You have purchased {purchased_item}!", category='success')
+        else:
+            flash(f"Insufficient budget to purchase {p_item_object.name}.", category='danger')
+
+    items = Item.query.filter_by(owner=None).all()
+    return render_template("market.html",items = items, buy_form= buy_form)
 
 @app.route("/register", methods = ['GET','POST'])
 def register_page():
