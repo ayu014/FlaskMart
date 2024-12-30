@@ -113,3 +113,37 @@
 .owned-items-list .list-group-item:hover {
     background-color: #f1f1f1;
 }
+
+
+/* New style */
+/* Wrapper for Table with Border */
+.table-container {
+    border: 2px solid #000; /* Solid black border */
+    border-radius: 10px; /* Curved corners */
+    padding: 15px; /* Space inside the border */
+    background-color: #f8f9fa; /* Light gray background for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 20px;
+}
+
+/* Table Styling */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.items-table th,
+.items-table td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.items-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.items-table tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+}
