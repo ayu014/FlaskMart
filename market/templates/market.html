@@ -14,33 +14,37 @@
         <div class="col-md-7 available-items-section">
             <h2 class="section-title">Available Items</h2>
             <p class="section-description">Click on one of the items to start buying</p>
-            <table class="items-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Barcode</th>
-                        <th>Price</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
-                        {% include 'includes/items_modals.html' %}
+            <!-- New Wrapper Div for Styling -->
+            <div class="table-container">
+                <table class="items-table">
+                    <thead>
                         <tr>
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.barcode }}</td>
-                            <td>₹ {{ item.price }}</td>
-                            <td>
-                                <button type="button" class="more-info-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
-                                <button type="button" class="buy-btn" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
-                            </td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Barcode</th>
+                            <th>Price</th>
+                            <th>Options</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            {% include 'includes/items_modals.html' %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.barcode }}</td>
+                                <td>₹ {{ item.price }}</td>
+                                <td>
+                                    <button type="button" class="more-info-btn" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                                    <button type="button" class="buy-btn" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
 
         <!-- Vertical Line -->
         <div class="col-md-1 vertical-divider">
@@ -53,7 +57,7 @@
             <p class="section-description">Click on sell item to put an item back on the market</p>
             <ul class="owned-items-list">
                 {% for item in owned_items %}
-                    <li class="list-group-item">{{ item.name }} - ₹{{ item.price }}</li>
+                    <li class="list-group-item">{{ item.name }}</li>
                 {% endfor %}
             </ul>
         </div>
