@@ -56,8 +56,14 @@
             <h2 class="section-title">Owned Items</h2>
             <p class="section-description">Click on sell item to put an item back on the market</p>
             <ul class="owned-items-list">
-                {% for item in owned_items %}
-                    <li class="list-group-item">{{ item.name }}</li>
+                {% for owned_item in owned_items %}
+                {% include 'includes/owned_items_modals.html' %}
+                    <li class="list-group-item">{{ owned_item.name }}
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}" 
+                                style="align-items: right;">
+                            Sell
+                        </button>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
