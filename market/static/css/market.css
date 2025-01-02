@@ -114,6 +114,21 @@
     background-color: #f1f1f1;
 }
 
+/* Align Sell Button to the Right */
+.owned-item {
+    display: flex; /* Enables Flexbox for the list item */
+    justify-content: space-between; /* Pushes content to edges */
+    align-items: center; /* Vertically aligns content */
+}
+
+/* Adjust Button Styling */
+.sell-button {
+    margin-left: auto; /* Pushes the button to the far right */
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
 
 /* New style */
 /* Wrapper for Table with Border */

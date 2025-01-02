@@ -58,7 +58,7 @@
             <ul class="owned-items-list">
                 {% for owned_item in owned_items %}
                 {% include 'includes/owned_items_modals.html' %}
-                    <li class="list-group-item">{{ owned_item.name }}
+                    <li class="list-group-item owned-item">{{ owned_item.name }}
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}" 
                                 style="align-items: right;">
                             Sell

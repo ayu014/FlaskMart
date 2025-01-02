@@ -1,6 +1,6 @@
-from market import db,login_manager
 from market import bcrypt
 from flask_login import UserMixin
+from market import db,login_manager
 from babel.numbers import format_currency
 
 @login_manager.user_loader

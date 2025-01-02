@@ -1,11 +1,11 @@
-from logging import info
 from os import name
-from market import app
-from market.models import Item, User
-from flask import request, render_template, redirect,url_for, flash,get_flashed_messages
-from flask_login import login_user, logout_user, login_required, current_user
-from market.forms import RegisterForm, LoginForm, SellItemForm, BuyItemForm
 from market import db
+from market import app
+from logging import info
+from market.models import Item, User
+from market.forms import RegisterForm, LoginForm, SellItemForm, BuyItemForm
+from flask_login import login_user, logout_user, login_required, current_user
+from flask import request, render_template, redirect,url_for, flash,get_flashed_messages
 
 
 
